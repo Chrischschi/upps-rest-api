@@ -17,6 +17,7 @@ import org.junit.Test;
 
 import extern.uppsTransportService.model.Address;
 import extern.uppsTransportService.model.DeliveryItem;
+import extern.uppsTransportService.model.DeliveryReciever;
 import extern.uppsTransportService.model.Name;
 import extern.uppsTransportService.model.TransportRequestData;
 import static org.junit.Assert.assertEquals;
@@ -70,17 +71,14 @@ public class RecieveTransportRequestTest {
     public void testRecieveTransportRequest() {
     	TransportRequestData sendData = new TransportRequestData();
     	
-    	sendData.address = new Address(); 
-    	sendData.address.number = 1;
-    	sendData.address.postalCode = "12345";
-    	sendData.address.streetName = "fooStreet";
+    	sendData.deliveryReciever = new DeliveryReciever();
+    	sendData.deliveryReciever.name = "christian schirin";
+    	sendData.deliveryReciever.adresse = "Main Street 123";
     	
     	sendData.deliveryItem = new DeliveryItem(); 
-    	sendData.deliveryItem.id = 1;
-    	sendData.deliveryItem.itemName = "Rasenmäher";
+    	sendData.deliveryItem.nr = 1;
+    	sendData.deliveryItem.name = "lawnmower";
     	
-    	sendData.name = new Name();
-    	sendData.name.firstName = "Foo"; sendData.name.lastName = "Bar";
     	
     	Entity<TransportRequestData> entity = Entity.json(sendData);
     	
