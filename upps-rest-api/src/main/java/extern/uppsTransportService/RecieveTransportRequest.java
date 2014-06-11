@@ -14,25 +14,26 @@ import extern.uppsTransportService.model.TransportRequestData;
  */
 @Path("transport/request")
 public class RecieveTransportRequest {
+	
+	private static long transportRequestId = 0;
 
     /**
      * Method handling HTTP GET requests. The returned object will be sent
      * to the client as "text/plain" media type.
      * 
+     * This method is useful for checking if the web service is available or not.
      *
      * @return String that will be returned as a text/plain response.
      */
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String getIt() {
-        return "Got it!";
+    public String showStatus() {
+        return "Online";
     }
     
     /** 
      * The method we need 
      * 
-     * TODO: Test and Real Implementation
-     *  
      * @param data
      * @return
      */
@@ -40,8 +41,9 @@ public class RecieveTransportRequest {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN) //id mappable to text/plain?
     public long recieveTransportRequest(TransportRequestData data) {
-    	long transportRequestId = 0;
     	
-    	return transportRequestId; 
+    	System.out.println(data);
+    	
+    	return ++transportRequestId; 
     }
 }
