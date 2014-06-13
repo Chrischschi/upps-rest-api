@@ -2,7 +2,8 @@ package extern.uppsTransportService.model;
 
 public class TransportRequestData {
 	
-	public DeliveryReciever deliveryReciever;
+	public String name; 
+	public String address;
 	public DeliveryItem deliveryItem;
 
 }

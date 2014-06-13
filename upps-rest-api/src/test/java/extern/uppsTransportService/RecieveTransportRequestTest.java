@@ -71,9 +71,9 @@ public class RecieveTransportRequestTest {
     public void testRecieveTransportRequest() {
     	TransportRequestData sendData = new TransportRequestData();
     	
-    	sendData.deliveryReciever = new DeliveryReciever();
-    	sendData.deliveryReciever.name = "christian schirin";
-    	sendData.deliveryReciever.adresse = "Main Street 123";
+    	
+    	sendData.name = "christian schirin";
+    	sendData.address = "Main Street 123";
     	
     	sendData.deliveryItem = new DeliveryItem(); 
     	sendData.deliveryItem.nr = 1;
