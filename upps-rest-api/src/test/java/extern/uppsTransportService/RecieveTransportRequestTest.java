@@ -15,10 +15,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import extern.uppsTransportService.model.Address;
 import extern.uppsTransportService.model.DeliveryItem;
-import extern.uppsTransportService.model.DeliveryReciever;
-import extern.uppsTransportService.model.Name;
 import extern.uppsTransportService.model.TransportRequestData;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
