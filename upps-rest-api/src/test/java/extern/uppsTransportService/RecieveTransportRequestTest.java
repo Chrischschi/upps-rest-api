@@ -3,6 +3,8 @@ package extern.uppsTransportService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.json.Json;
+import javax.json.JsonObject;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -15,8 +17,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import extern.uppsTransportService.model.DeliveryItem;
-import extern.uppsTransportService.model.TransportRequestData;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -66,18 +66,20 @@ public class RecieveTransportRequestTest {
     
     @Test
     public void testRecieveTransportRequest() {
-    	TransportRequestData sendData = new TransportRequestData();
+    	JsonObject deliveryItem = Json.createObjectBuilder()
+    			.add("nr", 1L)
+    			.add("name", "lawnmower")
+    			.build();
     	
+    	JsonObject sendData = Json.createObjectBuilder()
+    			.add("name", "christian schirin")
+    			.add("address", "Main Street 123")
+    			.add("deliveryItem", deliveryItem)
+    			.build();
+    			
+    
     	
-    	sendData.name = "christian schirin";
-    	sendData.address = "Main Street 123";
-    	
-    	sendData.deliveryItem = new DeliveryItem(); 
-    	sendData.deliveryItem.nr = 1;
-    	sendData.deliveryItem.name = "lawnmower";
-    	
-    	
-    	Entity<TransportRequestData> entity = Entity.json(sendData);
+    	Entity<JsonObject> entity = Entity.json(sendData);
     	
     	Response response = target.path("transport/request").request().post(entity);
     	
@@ -93,10 +95,10 @@ public class RecieveTransportRequestTest {
     public void testRecieveTransportRequestDifferentIDs() {
     	testRecieveTransportRequest(); 
     	
-    	TransportRequestData sendData2 = new TransportRequestData(); 
+    	JsonObject sendData2 = Json.createObjectBuilder().build();
     	//we don't care if the json is semantically correct
     	
-    	Entity<TransportRequestData> entity2 = Entity.json(sendData2);
+    	Entity<JsonObject> entity2 = Entity.json(sendData2);
     	
     	Response response2 = target.path("transport/request").request().post(entity2);
     	

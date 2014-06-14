@@ -1,5 +1,6 @@
 package extern.uppsTransportService;
 
+import javax.json.JsonObject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -7,7 +8,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import extern.uppsTransportService.model.TransportRequestData;
+
 
 /**
  * Currently only resource (exposed at "transport/request" path)
@@ -40,7 +41,7 @@ public class RecieveTransportRequest {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN) //id mappable to text/plain?
-    public long recieveTransportRequest(TransportRequestData data) {
+    public long recieveTransportRequest(JsonObject data) {
     	
     	System.out.println(data);
     	
