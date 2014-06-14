@@ -31,6 +31,7 @@ public class UPPS_REST_API_Main {
         debugLogger.setLevel(Level.ALL);
         
         rc.register(new LoggingFilter(debugLogger,true));
+        rc.register(new org.glassfish.jersey.moxy.json.MoxyJsonFeature());
 
         // create and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI

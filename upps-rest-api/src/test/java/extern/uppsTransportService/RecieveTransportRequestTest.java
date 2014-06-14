@@ -42,7 +42,6 @@ public class RecieveTransportRequestTest {
         // support for JSON in the client (you also have to uncomment
         // dependency on jersey-media-json module in pom.xml and Main.startServer())
         // --
-        // c.configuration().enable(new org.glassfish.jersey.media.json.JsonJaxbFeature());
 
         target = c.target(UPPS_REST_API_Main.BASE_URI);
     }
@@ -76,9 +75,7 @@ public class RecieveTransportRequestTest {
     			.add("address", "Main Street 123")
     			.add("deliveryItem", deliveryItem)
     			.build();
-    			
-    
-    	
+    		
     	Entity<JsonObject> entity = Entity.json(sendData);
     	
     	Response response = target.path("transport/request").request().post(entity);
